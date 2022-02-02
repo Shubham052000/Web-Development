@@ -34,7 +34,7 @@ But,
 `person.name = 'Yashasvi'`  
 `console.log(secondPerson.name)`  
 
-will output Yashasvi  
+will output Yashasvi even though we have changed the value of `person` object and not of `secondPerson`  
 This behavior is because `secondPerson` just copied the pointer and pointed to the same location as to where the value of `person.name` is
   
 will be same for **Arrays and Objects**  
