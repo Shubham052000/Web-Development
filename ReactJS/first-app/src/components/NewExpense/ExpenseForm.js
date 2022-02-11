@@ -23,7 +23,7 @@ const ExpenseForm = () => {
     //safer than the approach above as with this approach React will guarantee that you'll always get the latest state snapshot
 
     setUserInput((prevState) => {
-      return { ...prevState, enteredDate: event.target.value };
+      return { ...prevState, enteredTitle: event.target.value };
     });
   };
   const amountChangeHandler = (event) => {
@@ -40,8 +40,18 @@ const ExpenseForm = () => {
     });
     // setEnteredDate(event.target.value);
   };
+  const submitHandler = (event) => {
+    event.preventDefault(); //Default behavior when a form is submitted is the page reloads as form communicates to the server and to prevent that we use this .preventDefault() to prevent this default behavior of the forms (pure JavaScript not React specific)
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate),
+    };
+
+    console.log(expenseData);
+  };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
