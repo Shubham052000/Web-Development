@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //   const [enteredTitle, setEnteredTitle] = useState("");
   //   const [enteredAmount, setEnteredAmount] = useState("");
   //   const [enteredDate, setEnteredDate] = useState("");
@@ -42,13 +42,15 @@ const ExpenseForm = () => {
   };
   const submitHandler = (event) => {
     event.preventDefault(); //Default behavior when a form is submitted is the page reloads as form communicates to the server and to prevent that we use this .preventDefault() to prevent this default behavior of the forms (pure JavaScript not React specific)
+
     const expenseData = {
       title: userInput.enteredTitle,
       amount: userInput.enteredAmount,
       date: new Date(userInput.enteredDate),
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+    setUserInput({ enteredAmount: "", enteredTitle: "", enteredDate: "" });
   };
   return (
     <form onSubmit={submitHandler}>
