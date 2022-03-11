@@ -7,7 +7,7 @@ import Button from "./Button";
 const ErrorModal = (props) => {
   return (
     <div>
-      <div className={classes.backdrop} />
+      <div className={classes.backdrop} onClick={props.onModalClose} />
       <Card className={classes.modal}>
         <header className={classes.header}>
           <h2>{props.title}</h2>
