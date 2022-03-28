@@ -41,7 +41,7 @@ const Login = (props) => {
     isValid: null,
   });
 
-  const { isValid: emailIsValid } = emailState;
+  const { isValid: emailIsValid } = emailState; //name of attribute: alias_for_attribute
   const { isValid: passwordIsValid } = passwordState;
 
   useEffect(() => {
