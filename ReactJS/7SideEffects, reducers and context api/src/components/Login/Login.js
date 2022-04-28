@@ -85,7 +85,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    authCtx.onLogin(emailState.value, passwordState.value);
+    authCtx.onLogIn(emailState.value, passwordState.value);
   };
 
   return (
