@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+// import { createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 
 const counterReducer = (state = { counter: 0 }, { type, payload }) => {
@@ -6,8 +6,12 @@ const counterReducer = (state = { counter: 0 }, { type, payload }) => {
     case "increment":
       return { counter: state.counter + 1 };
 
+    case "increase":
+      return { counter: state.counter + payload };
+
     case "decrement":
       return { counter: state.counter - 1 };
+
     default:
       return state;
   }
