@@ -1,6 +1,6 @@
 import React from "react";
 import QuoteList from "../components/quotes/QuoteList";
-const DUMMY_QUOTES = [
+export const DUMMY_QUOTES = [
   { id: "q1", author: "Shubham", text: "Self-improvement is fun" },
   { id: "q2", author: "Shubhu", text: "Love yourself" },
   { id: "q3", author: "Satyawali", text: "Don't be a Jeffrey" },
