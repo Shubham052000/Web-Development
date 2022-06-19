@@ -23,7 +23,7 @@ function App() {
             {/*
               example of dynamic routing anything after : is a param and can be 
               accessed with useParams hook provide by react-router-dom
-             */}
+            */}
             <ProductDetail />
           </Route>
         </Switch>
