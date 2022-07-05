@@ -48,12 +48,11 @@ const AuthForm = () => {
         if (res.ok) {
           return res.json();
         } else {
-          res.json().then((data) => {
+          return res.json().then((data) => {
             let errorMessage = "Authentication Failed!";
             // if (data && data.error && data.error.message) {
             //   errorMessage = data.error.message;
             // }
-            alert(errorMessage);
             throw new Error(errorMessage);
           });
         }
