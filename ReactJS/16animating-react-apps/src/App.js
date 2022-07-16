@@ -39,9 +39,6 @@ const App = () => {
           ></div>
         )}
       </Transition>
-      {/* {showBlock && (
-        
-      )} */}
 
       {modalIsOpen && (
         <>
