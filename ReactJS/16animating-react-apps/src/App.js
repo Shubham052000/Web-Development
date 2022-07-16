@@ -39,10 +39,9 @@ const App = () => {
           ></div>
         )}
       </Transition>
-
+      <Modal show={modalIsOpen} closed={closeModal} />
       {modalIsOpen && (
         <>
-          <Modal show={modalIsOpen} closed={closeModal} />
           <Backdrop show={modalIsOpen} />
         </>
       )}
