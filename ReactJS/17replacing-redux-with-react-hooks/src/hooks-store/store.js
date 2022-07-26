@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 let globalState = {};
 let listeners = [];
@@ -29,7 +29,7 @@ export const useStore = () => {
 
 export const initStore = (userActions, initialState) => {
   if (initialState) {
-    globalState = { ...globalState, initialState };
+    globalState = { ...globalState, ...initialState };
   }
   actions = { ...actions, ...userActions };
 };
