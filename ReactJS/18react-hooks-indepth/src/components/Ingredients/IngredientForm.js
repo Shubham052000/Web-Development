@@ -16,9 +16,10 @@ const IngredientForm = React.memo((props) => {
     }));
   };
   const amountHandler = (event) => {
-    setInputState((prevInput) => {
-      return { ...prevInput, amount: event.target.value };
-    });
+    setInputState((prevInput) => ({
+      ...prevInput,
+      amount: event.target.value,
+    }));
   };
 
   const submitHandler = (event) => {
