@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import IngredientForm from "./IngredientForm";
-import Search from "./Search";
 import IngredientList from "./IngredientList";
+import Search from "./Search";
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
 
+  useEffect(() => {
+    (async () => {
+      const initialresp = await (
+        await fetch(
+          "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json"
+        )
+      ).json();
+      const loadedIngredients = [];
+      for (const key in initialresp) {
+        loadedIngredients.push({
+          id: key,
+          title: initialresp[key].ingredient.title,
+          amount: initialresp[key].ingredient.amount,
+        });
+      }
+      setIngredients(loadedIngredients);
+    })();
+  }, []);
   const addIngredientHandler = async (ingredient) => {
     const response = await fetch(
       "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json",
@@ -16,9 +34,7 @@ function Ingredients() {
         headers: { "Content-Type": "application/json" },
       }
     );
-
-    const respData = response.json();
-
+    const respData = await response.json();
     if (response.ok) {
       setIngredients((prevIngredients) => [
         ...prevIngredients,
