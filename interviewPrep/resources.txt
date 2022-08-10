@@ -1,0 +1,4 @@
+List of some JS and front-end resources:
+i) https://1loc.dev
+ii) https://30secondsofinterviews.org
+iii) https://javascript.info
