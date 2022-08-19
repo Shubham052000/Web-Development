@@ -8,32 +8,41 @@ function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
+    const loadedIngredients = [];
+
     (async () => {
       const initialresp = await (
         await fetch(
           "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json"
         )
       ).json();
-      const loadedIngredients = [];
+
       for (const key in initialresp) {
         loadedIngredients.push({
           id: key,
-          title: initialresp[key].ingredient.title,
-          amount: initialresp[key].ingredient.amount,
+          title: initialresp[key].title,
+          amount: initialresp[key].amount,
         });
       }
+
       setIngredients(loadedIngredients);
     })();
   }, []);
+
+  const filteredIngredientHandler = (filteredIngredients) => {
+    setIngredients(filteredIngredients);
+  };
+
   const addIngredientHandler = async (ingredient) => {
     const response = await fetch(
       "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json",
       {
         method: "POST",
-        body: JSON.stringify({ ingredient }),
+        body: JSON.stringify(ingredient),
         headers: { "Content-Type": "application/json" },
       }
     );
+
     const respData = await response.json();
     if (response.ok) {
       setIngredients((prevIngredients) => [
@@ -52,9 +61,8 @@ function Ingredients() {
   return (
     <div className="App">
       <IngredientForm onAddIngredient={addIngredientHandler} />
-
       <section>
-        <Search />
+        <Search onLoadedIngredients={filteredIngredientHandler} />
         <IngredientList
           ingredients={ingredients}
           onRemoveItem={ingredientRemoveHandler}
