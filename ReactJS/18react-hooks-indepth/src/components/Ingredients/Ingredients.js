@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
@@ -7,31 +7,9 @@ import Search from "./Search";
 function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
 
-  useEffect(() => {
-    const loadedIngredients = [];
-
-    (async () => {
-      const initialresp = await (
-        await fetch(
-          "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json"
-        )
-      ).json();
-
-      for (const key in initialresp) {
-        loadedIngredients.push({
-          id: key,
-          title: initialresp[key].title,
-          amount: initialresp[key].amount,
-        });
-      }
-
-      setIngredients(loadedIngredients);
-    })();
-  }, []);
-
-  const filteredIngredientHandler = (filteredIngredients) => {
+  const filteredIngredientHandler = useCallback((filteredIngredients) => {
     setIngredients(filteredIngredients);
-  };
+  }, []);
 
   const addIngredientHandler = async (ingredient) => {
     const response = await fetch(

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Card from "../UI/Card";
 import "./Search.css";
@@ -6,31 +6,36 @@ import "./Search.css";
 const Search = React.memo((props) => {
   const [enteredFilter, setEnteredFilter] = useState("");
   const { onLoadedIngredients } = props;
+  const inputRef = useRef();
 
   useEffect(() => {
-    const loadedIngredients = [];
-    const query =
-      enteredFilter.length === 0
-        ? ""
-        : `?orderBy="title"&equalTo="${enteredFilter}"`;
-    (async () => {
-      const initialresp = await (
-        await fetch(
-          "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json" +
-            query
-        )
-      ).json();
+    setTimeout(() => {
+      if (enteredFilter === inputRef.current.value) {
+        const loadedIngredients = [];
+        const query =
+          enteredFilter.length === 0
+            ? ""
+            : `?orderBy="title"&equalTo="${enteredFilter}"`;
+        (async () => {
+          const initialresp = await (
+            await fetch(
+              "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json" +
+                query
+            )
+          ).json();
 
-      for (const key in initialresp) {
-        loadedIngredients.push({
-          id: key,
-          title: initialresp[key].title,
-          amount: initialresp[key].amount,
-        });
+          for (const key in initialresp) {
+            loadedIngredients.push({
+              id: key,
+              title: initialresp[key].title,
+              amount: initialresp[key].amount,
+            });
+          }
+          onLoadedIngredients(loadedIngredients);
+        })();
       }
-      onLoadedIngredients(loadedIngredients);
-    })();
-  }, [enteredFilter, onLoadedIngredients]);
+    }, 500);
+  }, [enteredFilter, onLoadedIngredients, inputRef]);
 
   return (
     <section className="search">
@@ -39,6 +44,7 @@ const Search = React.memo((props) => {
           <label>Filter by Title</label>
           <input
             type="text"
+            ref={inputRef}
             value={enteredFilter}
             onChange={(event) => setEnteredFilter(event.target.value)}
           />
