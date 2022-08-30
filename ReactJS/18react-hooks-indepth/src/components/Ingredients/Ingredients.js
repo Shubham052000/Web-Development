@@ -1,9 +1,10 @@
-import React, { useReducer, useCallback, useMemo } from "react";
+import React, { useReducer, useCallback, useMemo, useEffect } from "react";
 
 import IngredientForm from "./IngredientForm";
 import IngredientList from "./IngredientList";
 import Search from "./Search";
 import ErrorModal from "../UI/ErrorModal";
+import useHttp from "../../hooks/http-hook";
 
 const ingredientReducer = (currentIngredients, action) => {
   switch (action.type) {
@@ -18,74 +19,58 @@ const ingredientReducer = (currentIngredients, action) => {
   }
 };
 
-const httpReducer = (currHttpState, action) => {
-  switch (action.type) {
-    case "SEND":
-      return { loading: true, error: null };
-    case "RESPONSE":
-      return { ...currHttpState, loading: false };
-    case "ERROR":
-      return { loading: false, error: action.errorData };
-    case "CLEAR":
-      return { ...currHttpState, error: null };
-    default:
-      throw new Error("Should not reach here");
-  }
-};
-
 function Ingredients() {
   const [ingredients, dispatch] = useReducer(ingredientReducer, []);
-  const [httpState, dispatchHttp] = useReducer(httpReducer, {
-    error: null,
-    loading: false,
-  });
+  const {
+    isLoading,
+    error,
+    data,
+    sendRequest,
+    reqExtra,
+    reqIdentifier,
+    clear,
+  } = useHttp();
+
+  useEffect(() => {
+    if (reqIdentifier === "REMOVE_ING" && !error && !isLoading) {
+      dispatch({ type: "DELETE", id: reqExtra });
+    } else if (!isLoading && !error && reqIdentifier === "ADD_ING") {
+      dispatch({
+        type: "ADD",
+        ingredient: { id: data.name, ...reqExtra },
+      });
+    }
+  }, [data, reqExtra, reqIdentifier, isLoading, error]);
 
   const filteredIngredientHandler = useCallback((filteredIngredients) => {
     dispatch({ type: "SET", ingredients: filteredIngredients });
   }, []);
 
-  const addIngredientHandler = useCallback(async (ingredient) => {
-    dispatchHttp({ type: "SEND" });
-    const response = await fetch(
-      "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json",
-      {
-        method: "POST",
-        body: JSON.stringify(ingredient),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-
-    const respData = await response.json();
-    dispatchHttp({ type: "RESPONSE" });
-    if (response.ok) {
-      dispatch({
-        type: "ADD",
-        ingredient: { id: respData.name, ...ingredient },
-      });
-    }
-  }, []);
-
-  const ingredientRemoveHandler = useCallback(async (id) => {
-    try {
-      dispatchHttp({ type: "SEND" });
-      const response = await fetch(
-        `https://react-http-174dc-default-rtdb.firebaseio.com/ingredients/${id}.json`,
-        {
-          method: "DELETE",
-        }
+  const addIngredientHandler = useCallback(
+    async (ingredient) => {
+      sendRequest(
+        "https://react-http-174dc-default-rtdb.firebaseio.com/ingredients.json",
+        "POST",
+        JSON.stringify(ingredient),
+        ingredient,
+        "ADD_ING"
       );
-      if (response) {
-        dispatchHttp({ type: "RESPONSE" });
-        dispatch({ type: "DELETE", id });
-      }
-    } catch (error) {
-      dispatchHttp({ type: "ERROR", errorData: "Something went wrong!" });
-    }
-  }, []);
+    },
+    [sendRequest]
+  );
 
-  const clearError = useCallback(() => {
-    dispatch({ type: "CLEAR" });
-  }, []);
+  const ingredientRemoveHandler = useCallback(
+    async (id) => {
+      sendRequest(
+        `https://react-http-174dc-default-rtdb.firebaseio.com/ingredients/${id}.json`,
+        "DELETE",
+        null,
+        id,
+        "REMOVE_ING"
+      );
+    },
+    [sendRequest]
+  );
 
   const ingredientList = useMemo(() => {
     return (
@@ -98,12 +83,10 @@ function Ingredients() {
 
   return (
     <div className="App">
-      {httpState.error && (
-        <ErrorModal onClose={clearError}>{httpState.error}</ErrorModal>
-      )}
+      {error && <ErrorModal onClose={clear}>{error}</ErrorModal>}
       <IngredientForm
         onAddIngredient={addIngredientHandler}
-        loading={httpState.loading}
+        loading={isLoading}
       />
       <section>
         <Search onLoadedIngredients={filteredIngredientHandler} />
