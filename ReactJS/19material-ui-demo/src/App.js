@@ -2,6 +2,7 @@ import React from "react";
 import {
   Typography,
   AppBar,
+  Box,
   Card,
   CardActions,
   CardContent,
@@ -11,9 +12,26 @@ import {
   Toolbar,
   Container,
   Button,
+  Stack,
+  Link,
 } from "@mui/material";
 
 import { PhotoCamera } from "@mui/icons-material";
+
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const Copyright = () => {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com">
+        My Github
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+};
 
 const App = () => {
   return (
@@ -49,61 +67,77 @@ const App = () => {
               vestibulum, magna dolor congue velit, vel pulvinar metus tortor
               sed augue. Duis eleifend diam eget ipsum malesuada varius.
             </Typography>
-            <div>
-              <Grid
-                container
-                spacing={2}
-                justifyContent="center"
-                marginTop={"2rem"}
-              >
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    See my photos
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
+
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+              <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button>
+            </Stack>
           </Container>
         </div>
-        <Container maxWidth="md">
+        <Container sx={{ py: 8 }} maxWidth="md">
           <Grid container spacing={4} marginTop="1rem">
-            <Grid item>
-              <Card>
-                <CardMedia
-                  component="img"
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card
                   sx={{
-                    // 16:9
-                    pt: "56.25%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
-                  image="https://source.unsplash.com/random"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5">
-                    Heading
-                  </Typography>
-                  <Typography>
-                    This is a media card. You can use this section to describe
-                    the content.
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    View
-                  </Button>
-                  <Button size="small" color="secondary">
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+                >
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      // 16:9
+                      pt: "56.25%",
+                    }}
+                    image="https://source.unsplash.com/random"
+                    alt="random"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5">
+                      Heading
+                    </Typography>
+                    <Typography>
+                      This is a media card. You can use this section to describe
+                      the content.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                    <Button size="small" color="secondary">
+                      Edit
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </main>
+      <footer>
+        <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
+          <Typography variant="h6" align="center" gutterBottom>
+            Footer
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="text.secondary"
+            component="p"
+          >
+            Something here to give the footer a purpose!
+          </Typography>
+          <Copyright />
+        </Box>
+      </footer>
     </>
   );
 };
