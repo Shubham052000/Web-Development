@@ -16,6 +16,11 @@ import {
   Link,
 } from "@mui/material";
 
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
 import { PhotoCamera } from "@mui/icons-material";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
