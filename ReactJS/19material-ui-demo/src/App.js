@@ -68,9 +68,7 @@ const App = () => {
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
               hendrerit odio et ligula congue fringilla. Mauris ut nunc commodo,
-              egestas nulla sed, congue purus. Aliquam vestibulum, mi sed mollis
-              vestibulum, magna dolor congue velit, vel pulvinar metus tortor
-              sed augue. Duis eleifend diam eget ipsum malesuada varius.
+              egestas nulla sed, congue purus.
             </Typography>
 
             <Stack
