@@ -27,4 +27,39 @@ function createBook(book: Book): Book {
 
 createBook({ name: "", author: "", price: 399, isAvailable: false });
 
+type Human = {
+  readonly _id: string;
+  numLimbs: number;
+  emotion: string;
+  isAlive: boolean;
+  isHealthy?: boolean;
+};
+
+let myHuman: Human = {
+  _id: "1245",
+  numLimbs: 4,
+  emotion: "happy",
+  isAlive: true,
+};
+
+type BMI = {
+  bodyMassIndex: string;
+};
+
+type BGL = {
+  bloodGlucoseLevels: string;
+};
+
+type HealthParams = BMI & BGL & { vision: string };
+
+let humanHealth: HealthParams = {
+  bodyMassIndex: "healthy range",
+  bloodGlucoseLevels: "healthy range",
+  vision: "10 on 10",
+};
+
+myHuman.emotion = "sad";
+
+// myHuman._id = "345678"  cries as cannot modify readonly values
+
 export {};

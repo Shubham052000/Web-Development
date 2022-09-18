@@ -13,3 +13,14 @@ createUser(newUser);
 var createCourse = function () {
     return { name: "reactjs", price: 399 };
 };
+function createBook(book) {
+    return book;
+}
+createBook({ name: "", author: "", price: 399, isAvailable: false });
+var myHuman = {
+    _id: "1245",
+    numLimbs: 4,
+    emotion: "happy",
+    isAlive: true
+};
+myHuman.emotion = "sad";
