@@ -4,7 +4,7 @@ import classes from "./PostLists.module.css";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
 
-const PostList = () => {
+const PostList = ({ modalIsVisible, onCloseModal }) => {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
 
@@ -17,12 +17,14 @@ const PostList = () => {
 
   return (
     <>
-      <Modal>
-        <NewPost
-          onBodyChange={changeBodyHandler}
-          onAuthorChange={changeAuthorHandler}
-        />
-      </Modal>
+      {modalIsVisible && (
+        <Modal onClose={onCloseModal}>
+          <NewPost
+            onBodyChange={changeBodyHandler}
+            onAuthorChange={changeAuthorHandler}
+          />
+        </Modal>
+      )}
       <ul className={classes.posts}>
         <Post author={enteredAuthor} body={enteredBody} />
         <Post author="Satyawali" body="TS is based" />
