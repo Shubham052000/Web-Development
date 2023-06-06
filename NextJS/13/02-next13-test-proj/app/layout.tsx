@@ -1,9 +1,6 @@
 import "./globals.css";
-import {
-  Montserrat,
-  Pacifico,
-  Raleway,
-} from "next/font/google";
+import { Montserrat, Pacifico, Raleway } from "next/font/google";
+import MainHeader from "./_components/MainHeader";
 
 export const montserrat = Montserrat({ subsets: ["latin"], weight: "400" });
 export const raleway = Raleway({ subsets: ["latin"], weight: "400" });
@@ -21,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header className="mb-8 flex justify-center gap-8 p-4 text-center">
+          <MainHeader />
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

@@ -10,9 +10,6 @@ const page = () => {
   const router = useRouter();
   return (
     <div className="text-center">
-      <Link href={"/"} className=" underline underline-offset-4">
-        Go to Home Route
-      </Link>
       <h1>you're on hello route!!</h1>
       <button
         onClick={() => router.push("/")}
