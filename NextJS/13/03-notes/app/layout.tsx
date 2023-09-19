@@ -18,13 +18,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/notes">Notes </Link>
+        <main className="ml-8">
+          <nav className="flex gap-4">
+            <Link href="/" className="underline underline-offset-2">
+              Home
+            </Link>
+            <Link href="/notes" className="underline underline-offset-2">
+              Notes{" "}
+            </Link>
           </nav>
+          {children}
         </main>
-        {children}
       </body>
     </html>
   );
