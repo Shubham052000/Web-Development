@@ -4,7 +4,7 @@ import CreateNote from "./[id]/CreateNote";
 
 export const dynamic = "auto",
   dynamicParams = true,
-  revalidate = 0,
+  revalidate = 1,
   fetchCache = "default-no-store",
   runtime = "nodejs",
   preferredRegion = "auto";
