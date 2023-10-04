@@ -5,7 +5,7 @@ export default function NavMenu() {
   return (
     <nav className="flex justify-between py-10 px-5">
       <Link href={"/"} className="inline-block">
-        <Image src="/logo.svg" alt="NextSpace Logo" width={50} height={50} />
+        <Image src="/logo.svg" alt="NextSpace Logo" width={216} height={30} />
       </Link>
       <ul className="flex gap-4">
         <li>
