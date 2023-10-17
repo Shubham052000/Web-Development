@@ -18,10 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <AuthProvider>
-      <html lang="en" className="">
+      <html lang="en">
         <body className={inter.className}>
           <NavMenu />
-          {children}
+          <main className="h-screen">{children}</main>
         </body>
       </html>
     </AuthProvider>

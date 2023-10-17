@@ -21,7 +21,7 @@ export default async function UserProfile({ params }: Props) {
   const { name, bio, image } = user ?? {};
 
   return (
-    <div className="px-10 py-8 w-screen">
+    <div className="px-10 py-8 h-screen">
       <h1 className="font-bold text-3xl mb-5">{name}</h1>
 
       <img
