@@ -1,3 +1,4 @@
+import FollowButton from "@/app/components/FollowButton/FollowButton";
 import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
 
@@ -33,6 +34,8 @@ export default async function UserProfile({ params }: Props) {
 
       <h3>Bio</h3>
       <p className="text-slate-400 italic">{bio ?? "NA"}</p>
+
+      <FollowButton targetUserId={params.id} />
     </div>
   );
 }
