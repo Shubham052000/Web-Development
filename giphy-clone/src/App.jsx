@@ -39,7 +39,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <GifProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </GifProvider>
   );
 }
