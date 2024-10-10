@@ -1,7 +1,11 @@
 import express from "express";
-import type { Request, Response } from "express";
+import type {
+  NextFunction,
+  Request,
+  Response,
+  ErrorRequestHandler,
+} from "express";
 import userRouter from "./routes/users";
-import bodyParser from "body-parser";
 import calcRouter from "./routes/calculator";
 
 const PORT = 3001;
@@ -20,6 +24,13 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/users", userRouter);
 app.use("/calculator", calcRouter);
 
-console.log("App is running on PORT: http://localhost:" + PORT);
+// Error handling middleware
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  const errMsg = err.message || "Something went wrong with the request";
+  const errStatus = err.status || 500;
+  res.status(errStatus).send({ error: errMsg });
+});
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Application is listening on: http://localhost:${PORT}`);
+});
