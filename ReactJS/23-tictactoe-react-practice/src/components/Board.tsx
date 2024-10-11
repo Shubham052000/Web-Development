@@ -1,9 +1,8 @@
-import { useState } from "react";
 import useTicTacToe from "../hooks/useTicTacToe";
 
-function Board() {
+function Board({ tiles }: { tiles: number }) {
   const { boardState, getStatusMessage, handleClick, resetGame } =
-    useTicTacToe();
+    useTicTacToe(tiles);
   return (
     <div className="flex flex-col items-center">
       <h2 className="text-3xl mt-20">Tic Tac Toe</h2>
@@ -22,7 +21,7 @@ function Board() {
 
       <div
         id="board"
-        className="w-1/2 lg:w-1/4 mt-14 grid grid-cols-3 p-1 bg-slate-400 rounded-lg gap-1"
+        className={`w-1/2 lg:w-1/4 mt-14 grid grid-cols-${tiles} p-1 bg-slate-400 rounded-lg gap-1`}
       >
         {boardState.map((symbol, index) => {
           return (
