@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 const challenges = [
   {
     id: 1001,
-    title: "Image Carousel",
+    title: "Sliding Image Carousel",
   },
 ];
 
