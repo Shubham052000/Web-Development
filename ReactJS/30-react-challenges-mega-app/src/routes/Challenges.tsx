@@ -5,6 +5,10 @@ const challenges = [
     id: 1001,
     title: "Sliding Image Carousel",
   },
+  {
+    id: 1002,
+    title: "Modal with Backdrop",
+  },
 ];
 
 const Challenges = () => {
