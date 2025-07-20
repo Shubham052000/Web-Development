@@ -37,7 +37,7 @@ export default function SlidingCarousel() {
         {/* Prev Button */}
         <button
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 px-3 py-1 rounded-full"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 px-3 py-1 rounded-full cursor-pointer"
         >
           ‹
         </button>
@@ -45,7 +45,7 @@ export default function SlidingCarousel() {
         {/* Next Button */}
         <button
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 px-3 py-1 rounded-full"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-gray-800 px-3 py-1 rounded-full cursor-pointer"
         >
           ›
         </button>
@@ -56,7 +56,7 @@ export default function SlidingCarousel() {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-2 w-2 rounded-full ${
+              className={`h-2 w-2 rounded-full cursor-pointer ${
                 current === i ? "bg-white" : "bg-white/50"
               }`}
             />
