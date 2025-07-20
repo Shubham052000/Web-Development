@@ -9,6 +9,10 @@ const challenges = [
     id: 1002,
     title: "Modal with Backdrop",
   },
+  {
+    id: 2001,
+    title: "Custom Hook for fetching data",
+  },
 ];
 
 const Challenges = () => {
