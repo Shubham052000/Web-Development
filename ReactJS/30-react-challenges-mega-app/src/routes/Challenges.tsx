@@ -10,6 +10,10 @@ const challenges = [
     title: "Modal with Backdrop",
   },
   {
+    id: 1003,
+    title: "Accordion component",
+  },
+  {
     id: 2001,
     title: "Custom Hook for fetching data",
   },

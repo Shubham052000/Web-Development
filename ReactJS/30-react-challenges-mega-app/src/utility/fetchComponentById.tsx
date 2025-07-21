@@ -2,10 +2,12 @@ import { type JSX } from "react";
 import ImageCarousel from "../components/ImageCarousel/ImageCarousel";
 import OverlayModal from "../components/OverlayModal/OverlayModal";
 import UseFetchComponent from "../components/UseFetchComponent/UseFetchComponent";
+import Accordion from "../components/AccordionComponent/Accordion";
 
 const map = new Map<number, JSX.Element>([
   [1001, <ImageCarousel />],
   [1002, <OverlayModal />],
+  [1003, <Accordion />],
   [2001, <UseFetchComponent />],
 ]);
 
