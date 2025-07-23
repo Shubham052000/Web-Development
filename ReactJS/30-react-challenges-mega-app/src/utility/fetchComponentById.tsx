@@ -3,11 +3,13 @@ import ImageCarousel from "../components/ImageCarousel/ImageCarousel";
 import OverlayModal from "../components/OverlayModal/OverlayModal";
 import UseFetchComponent from "../components/UseFetchComponent/UseFetchComponent";
 import Accordion from "../components/AccordionComponent/Accordion";
+import Tabs from "../components/Tabs/Tabs";
 
 const map = new Map<number, JSX.Element>([
   [1001, <ImageCarousel />],
   [1002, <OverlayModal />],
   [1003, <Accordion />],
+  [1004, <Tabs />],
   [2001, <UseFetchComponent />],
 ]);
 

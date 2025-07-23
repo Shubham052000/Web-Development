@@ -14,6 +14,10 @@ const challenges = [
     title: "Accordion component",
   },
   {
+    id: 1004,
+    title: "Tabs component",
+  },
+  {
     id: 2001,
     title: "Custom Hook for fetching data",
   },
