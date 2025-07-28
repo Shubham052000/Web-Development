@@ -18,6 +18,10 @@ const challenges = [
     title: "Tabs component",
   },
   {
+    id: 1005,
+    title: "Toast Notifications",
+  },
+  {
     id: 2001,
     title: "Custom Hook for fetching data",
   },
