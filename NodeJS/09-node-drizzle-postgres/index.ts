@@ -1,22 +1,34 @@
-import db from "./db";
-import { usersTable } from "./drizzle/schema";
+import express from "express";
+import booksRouter from "./routes/books.routes";
+import loggerMiddleware from "./middleware/loggerMiddleware";
 
-async function getAllUsers() {
-  const users = await db.select().from(usersTable);
-  console.log(users);
-  return users;
-}
+const app = express();
+const PORT = 3000;
 
-async function createUser({
-  name,
-  age,
-  email,
-}: {
-  name: string;
-  age: number;
-  email: string;
-}) {
-  await db.insert(usersTable).values({ name, age, email }).returning();
-}
+app.use(express.json());
+app.use(loggerMiddleware);
+app.use("/books", booksRouter);
 
-getAllUsers();
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// async function getAllUsers() {
+//   const users = await db.select().from(usersTable);
+//   console.log(users);
+//   return users;
+// }
+
+// async function createUser({
+//   name,
+//   age,
+//   email,
+// }: {
+//   name: string;
+//   age: number;
+//   email: string;
+// }) {
+//   await db.insert(usersTable).values({ name, age, email }).returning();
+// }
+
+// getAllUsers();
