@@ -18,3 +18,17 @@ export const authenticationMiddleware = (
   req.user = payload;
   return next();
 };
+
+export const ensureAuthenticated = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.user || !req.user.id) {
+    return res
+      .status(401)
+      .json({ error: "You must be logged in to access this resource." });
+  }
+
+  return next();
+};
