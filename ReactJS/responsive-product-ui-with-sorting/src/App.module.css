@@ -1,0 +1,35 @@
+/* .container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.item {
+  list-style: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+} */
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.item {
+  list-style: none;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
