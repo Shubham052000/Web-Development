@@ -4,6 +4,7 @@ import NavigationBar from "./layouts/NavigationBar";
 import Challenges from "./routes/Challenges";
 import About from "./routes/About";
 import Challenge from "./routes/Challenge";
+import SeniorExpEngineerReactChallenges from "./routes/SeniorExpEngineerReactChallenges";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/about",
       Component: About,
+    },
+    {
+      path: "senior-exp-engineer-react-challenges",
+      Component: SeniorExpEngineerReactChallenges,
     },
   ]);
 

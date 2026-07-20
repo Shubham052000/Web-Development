@@ -6,6 +6,7 @@ import Accordion from "../components/AccordionComponent/Accordion";
 import Tabs from "../components/Tabs/Tabs";
 import ToastNotification from "../components/ToastNotification/ToastNotification";
 import { ToastProvider } from "../components/ToastNotification/ToastContext";
+import InterviewApps from "../routes/InterviewApps";
 
 const map = new Map<number, JSX.Element>([
   [1001, <ImageCarousel />],
@@ -19,10 +20,11 @@ const map = new Map<number, JSX.Element>([
     </ToastProvider>,
   ],
   [2001, <UseFetchComponent />],
+  [2002, <InterviewApps />],
 ]);
 
 export default function fetchComponentById(
-  id: string | undefined
+  id: string | undefined,
 ): JSX.Element {
   const component = map.get(Number(id));
   return component ?? <div>Component not found</div>;

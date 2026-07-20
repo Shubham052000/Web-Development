@@ -25,6 +25,10 @@ const challenges = [
     id: 2001,
     title: "Custom Hook for fetching data",
   },
+  {
+    id: 2002,
+    title: "Interview PDF Applications",
+  },
 ];
 
 const Challenges = () => {

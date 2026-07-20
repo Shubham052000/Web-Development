@@ -18,7 +18,7 @@ export default function SlidingCarousel() {
       <h1 className="text-4xl text-center mt-20 mb-20">
         Sliding Image Carousel with ReactJS and css
       </h1>
-      <div className="relative w-full max-w-lg mx-auto overflow-hidden">
+      <div className="relative max-w-lg mx-auto overflow-hidden">
         {/* Slides container */}
         <div
           className="flex transition-transform duration-500"
