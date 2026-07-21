@@ -2,6 +2,8 @@ import { useState } from "react";
 import ReusableReactDropdown from "../components/SeniorEngineerReactComponents/ReusableReactDropdown";
 import FetchProducts from "../components/SeniorEngineerReactComponents/FetchProducts";
 import PokeCache from "../components/SeniorEngineerReactComponents/PokeCache";
+import CardComponent from "../components/SeniorEngineerReactComponents/CardComponent";
+import Form from "../components/SeniorEngineerReactComponents/Form";
 
 const questions = [
   {
@@ -22,6 +24,18 @@ const questions = [
     title: "PokeCache",
     desc: "use the poke api fetch pokemon show a dropdown list of pokemon, when selecting any pokemon fetch its details using the providd url. and dispaly abilities. at last cache dtails so that selecting the same pokemon again won't trigger another api call. read about browser side caching",
     content: <PokeCache />,
+  },
+  {
+    id: 4,
+    title: "CardComponent",
+    desc: "Create a card component, display title, price on the right and image on the left. cards to be displayed in the column wise. Design pattern on this same question",
+    content: <CardComponent />,
+  },
+  {
+    id: 5,
+    title: "Form",
+    desc: "Create a registration form that has fields like textinput, dropdown and radio button. When submitting the form need to get all the data that entered in the form fields using Form Data API",
+    content: <Form />,
   },
 ];
 
@@ -54,50 +68,48 @@ const SeniorExpEngineerReactChallenges = () => {
 
 export default SeniorExpEngineerReactChallenges;
 /*
--> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
-
--> polyfill for promise.all
-
-
--> Create a card component, display title, price on the right and image on the left. cards to be displayed in the column wise. Design patter on this same question
-
--> Create a registration form that has fields like textinput, dropdown and radio button. When submitting the form need to get all the data that entered in the form fields.
-
--> Create and use mixins? write syntax
 
 -> custom hook that can able to get, remove and set the value in the local storage.
 
--> Timer with start, stop and pause with minutes and seconds
+-> fetch data from https://swapi.py4e.com/api/people/, display it in table with name, file and vehicle as table column header. if you open the above url, filem and vehicle are again URL, we have to fetch data and display film and behicle with comma separated value and at last implement paginaton: solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
+
+-> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
+
+-> create custom hook and react context implementation implement search debouncing. https://rickandmortyapi.com/apicharacter/name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12
+
+-> create a component for Sale snackbars: two inputs first for item name second for sale duration in seconds and a button to submit. Once the values are entered and submitted a snackbar is added below the inputs for the time that was entered and the name and countdown of the duration should be visible on the snack bar. further items added are sorted in the list such that the item which has shortest duration should be on the top of the screen.
+
+-> polyfill for promise.all
 
 -> Create a generic function in typescript
+
+-> Create and use mixins? write syntax
+
+-> Timer with start, stop and pause with minutes and seconds
 
 -> Generate performance metrics for reddit.com
 
 -> bundles, webpack and vite
 
--> fetch data from https://swapi.py4e.com/api/people/, display it in table with name, file and vehicle as table column header. if you open the above url, filem and vehicle are again URL, we have to fetch data and display film and behicle with comma separated value and at last implement paginaton: solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
-
--> difference b/w type and interfaces 
-
 -> vite vs webpack how it makes developer life easier main advantage of using it
 
--> design patter HOC, custom hooks, render props all explain in detail with one use case.
+-> design patterns HOC, custom hooks, render props all explain in detail with one use case.
 
 -> react rendering process questions
-
--> create custom hook and react context implementation implement search debouncing. https://rickandmortyapi.com/apicharacter/name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12
 
 -> picture tag rem ^nbsp;  radio css animation css extend vs includes 
 
 -> cookies, session and local storage
 
--> FormData API
-
--> critical rendering path, web vitals, DDOS man in the middle, static tools used in your project
-
 Q) how would you allocate 100mb memory for your web app
 A) In JavaScript, I can't directly ask the browser to reserve 100 MB like I could with malloc in C or new in C++. Memory is allocated automatically as objects, arrays, or buffers are created. If I specifically needed roughly 100 MB—for example, to hold binary data—I would allocate an ArrayBuffer of that size.
 
 const buffer = new ArrayBuffer(100 * 1024 * 1024); // 100 MB
+
+Q) Difference b/w type and interfaces 
+A)
+
+Q) critical rendering path, web vitals, DDOS man in the middle, static tools used in your project
+A)
 
 */
