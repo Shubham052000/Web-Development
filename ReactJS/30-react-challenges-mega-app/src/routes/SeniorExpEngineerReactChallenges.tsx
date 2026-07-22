@@ -4,6 +4,9 @@ import FetchProducts from "../components/SeniorEngineerReactComponents/FetchProd
 import PokeCache from "../components/SeniorEngineerReactComponents/PokeCache";
 import CardComponent from "../components/SeniorEngineerReactComponents/CardComponent";
 import Form from "../components/SeniorEngineerReactComponents/Form";
+import UseLocalStorageExample from "../components/SeniorEngineerReactComponents/UseLocalStorageExample";
+import RickAndMortyContextWithHookAndDebouncing from "../components/SeniorEngineerReactComponents/RickAndMortyContextWithHookAndDebouncing";
+import LiveSaleSnackbar from "../components/SeniorEngineerReactComponents/LiveSaleSnackbar";
 
 const questions = [
   {
@@ -37,6 +40,24 @@ const questions = [
     desc: "Create a registration form that has fields like textinput, dropdown and radio button. When submitting the form need to get all the data that entered in the form fields using Form Data API",
     content: <Form />,
   },
+  {
+    id: 6,
+    title: "useLocalStorage",
+    desc: "custom hook that can able to get, remove and set the value in the local storage.",
+    content: <UseLocalStorageExample />,
+  },
+  {
+    id: 7,
+    title: "RickAndMortyContextWithHookAndDebouncing",
+    desc: "create custom hook and react context implementation implement search debouncing. https://rickandmortyapi.com/apicharacter/name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12",
+    content: <RickAndMortyContextWithHookAndDebouncing />,
+  },
+  {
+    id: 8,
+    title: "LiveSaleSnackbar",
+    desc: "create a component for Sale snackbars: two inputs first for item name second for sale duration in seconds and a button to submit. Once the values are entered and submitted a snackbar is added below the inputs for the time that was entered and the name and countdown of the duration should be visible on the snack bar. further items added are sorted in the list such that the item which has shortest duration should be on the top of the screen.",
+    content: <LiveSaleSnackbar />,
+  },
 ];
 
 const SeniorExpEngineerReactChallenges = () => {
@@ -68,24 +89,17 @@ const SeniorExpEngineerReactChallenges = () => {
 
 export default SeniorExpEngineerReactChallenges;
 /*
-
--> custom hook that can able to get, remove and set the value in the local storage.
+-> Timer with start, stop and pause with minutes and seconds
 
 -> fetch data from https://swapi.py4e.com/api/people/, display it in table with name, file and vehicle as table column header. if you open the above url, filem and vehicle are again URL, we have to fetch data and display film and behicle with comma separated value and at last implement paginaton: solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
 
 -> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
-
--> create custom hook and react context implementation implement search debouncing. https://rickandmortyapi.com/apicharacter/name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12
-
--> create a component for Sale snackbars: two inputs first for item name second for sale duration in seconds and a button to submit. Once the values are entered and submitted a snackbar is added below the inputs for the time that was entered and the name and countdown of the duration should be visible on the snack bar. further items added are sorted in the list such that the item which has shortest duration should be on the top of the screen.
 
 -> polyfill for promise.all
 
 -> Create a generic function in typescript
 
 -> Create and use mixins? write syntax
-
--> Timer with start, stop and pause with minutes and seconds
 
 -> Generate performance metrics for reddit.com
 
