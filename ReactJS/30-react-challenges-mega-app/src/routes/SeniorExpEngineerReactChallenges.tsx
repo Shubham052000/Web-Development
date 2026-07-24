@@ -9,6 +9,7 @@ import RickAndMortyContextWithHookAndDebouncing, {
   ThemeContextProvider,
 } from "../components/SeniorEngineerReactComponents/RickAndMortyContextWithHookAndDebouncing";
 import LiveSaleSnackbar from "../components/SeniorEngineerReactComponents/LiveSaleSnackbar";
+import TimerWithMinutesAndSeconds from "../components/SeniorEngineerReactComponents/TimerWithMinutesAndSeconds";
 
 const questions = [
   {
@@ -26,31 +27,32 @@ const questions = [
   },
   {
     id: 3,
-    title: "PokeCache",
+    title: "Poke Cache",
     desc: "use the poke api fetch pokemon show a dropdown list of pokemon, when selecting any pokemon fetch its details using the providd url. and dispaly abilities. at last cache dtails so that selecting the same pokemon again won't trigger another api call. read about browser side caching",
     content: <PokeCache />,
   },
   {
     id: 4,
-    title: "CardComponent",
+    title: "Card Component",
     desc: "Create a card component, display title, price on the right and image on the left. cards to be displayed in the column wise. Design pattern on this same question",
     content: <CardComponent />,
   },
   {
     id: 5,
-    title: "Form",
+    title: "Registration Form with FormData API",
     desc: "Create a registration form that has fields like textinput, dropdown and radio button. When submitting the form need to get all the data that entered in the form fields using Form Data API",
     content: <Form />,
   },
   {
     id: 6,
-    title: "useLocalStorage",
+    title: "useLocalStorage to get remove and sync value with LocalStorage",
     desc: "custom hook that can able to get, remove and set the value in the local storage.",
     content: <UseLocalStorageExample />,
   },
   {
     id: 7,
-    title: "RickAndMortyContextWithHookAndDebouncing",
+    title:
+      "Rick And Morty character with episode, Context With Hook And Debouncing",
     desc: "create custom hook and react context implementation, implement search debouncing. https://rickandmortyapi.com/api/character/?name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12",
     content: (
       <ThemeContextProvider>
@@ -60,9 +62,15 @@ const questions = [
   },
   {
     id: 8,
-    title: "LiveSaleSnackbar",
+    title: "Live Sale Snackbar",
     desc: "create a component for Sale snackbars: two inputs first for item name second for sale duration in seconds and a button to submit. Once the values are entered and submitted a snackbar is added below the inputs for the time that was entered and the name and countdown of the duration should be visible on the snack bar. further items added are sorted in the list such that the item which has shortest duration should be on the top of the screen.",
     content: <LiveSaleSnackbar />,
+  },
+  {
+    id: 9,
+    title: "Timer With Minutes And Seconds",
+    desc: "Timer with start, stop and pause with minutes and seconds",
+    content: <TimerWithMinutesAndSeconds />,
   },
 ];
 
@@ -95,8 +103,6 @@ const SeniorExpEngineerReactChallenges = () => {
 
 export default SeniorExpEngineerReactChallenges;
 /*
--> Timer with start, stop and pause with minutes and seconds
-
 -> fetch data from https://swapi.py4e.com/api/people/, display it in table with name, file and vehicle as table column header. if you open the above url, filem and vehicle are again URL, we have to fetch data and display film and behicle with comma separated value and at last implement paginaton: solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
 
 -> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 

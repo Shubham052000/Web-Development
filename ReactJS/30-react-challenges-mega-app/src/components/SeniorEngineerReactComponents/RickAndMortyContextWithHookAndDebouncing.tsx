@@ -77,8 +77,6 @@ const RickAndMortyContextWithHookAndDebouncing = () => {
             };
           }),
         );
-
-        console.log(toSet);
         setCharacters(toSet);
       } catch (e) {
         console.error(e);
