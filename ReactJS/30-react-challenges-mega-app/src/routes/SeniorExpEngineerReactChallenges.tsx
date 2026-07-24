@@ -5,7 +5,9 @@ import PokeCache from "../components/SeniorEngineerReactComponents/PokeCache";
 import CardComponent from "../components/SeniorEngineerReactComponents/CardComponent";
 import Form from "../components/SeniorEngineerReactComponents/Form";
 import UseLocalStorageExample from "../components/SeniorEngineerReactComponents/UseLocalStorageExample";
-import RickAndMortyContextWithHookAndDebouncing from "../components/SeniorEngineerReactComponents/RickAndMortyContextWithHookAndDebouncing";
+import RickAndMortyContextWithHookAndDebouncing, {
+  ThemeContextProvider,
+} from "../components/SeniorEngineerReactComponents/RickAndMortyContextWithHookAndDebouncing";
 import LiveSaleSnackbar from "../components/SeniorEngineerReactComponents/LiveSaleSnackbar";
 
 const questions = [
@@ -50,7 +52,11 @@ const questions = [
     id: 7,
     title: "RickAndMortyContextWithHookAndDebouncing",
     desc: "create custom hook and react context implementation, implement search debouncing. https://rickandmortyapi.com/api/character/?name=ein fetch character details and show them in card view it will have multiple episodes in this with episode id from the below api fetch the names of episodes and render them in the same card https:/rickandmortyapi.com/api/episode/12",
-    content: <RickAndMortyContextWithHookAndDebouncing />,
+    content: (
+      <ThemeContextProvider>
+        <RickAndMortyContextWithHookAndDebouncing />
+      </ThemeContextProvider>
+    ),
   },
   {
     id: 8,
