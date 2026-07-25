@@ -133,9 +133,149 @@ A) In JavaScript, I can't directly ask the browser to reserve 100 MB like I coul
 const buffer = new ArrayBuffer(100 * 1024 * 1024); // 100 MB
 
 Q) Difference b/w type and interfaces 
-A)
+A) Both type and interface are used to describe the shape of objects in TypeScript and provide compile-time type checking. For most object definitions, they are interchangeable. The key differences are that interfaces support declaration merging and are designed for extending object-oriented APIs, while types are more flexible because they can represent primitives, unions, intersections, tuples, and mapped types. My general rule is to use interfaces for public object contracts and types when I need TypeScript's advanced type features.
 
-Q) critical rendering path, web vitals, DDOS man in the middle, static tools used in your project
-A)
+types can do union and intersection which interfaces can't intersection is achieved by extends keyword in interface also function types and mapped types can't be done in interfaces whereas interfaces support declaration merging that types don't
 
+
+Q) Explain Critical Rendering Path, web vitals, DDOS man in the middle, static tools used in your project
+A) Critical Rendering Path: The Critical Rendering Path is the sequence of steps the browser performs to convert HTML, CSS, and JavaScript into pixels on the screen.
+
+  The faster this path completes, the faster users see the page.
+
+  Path is as follows
+  HTML Request -> HTML Parsed -> DOM Tree -> Download CSS -> Parse CSS -> CSSOM Tree -> CSSOM + DOM -> Render Tree -> Layout(Calculate Positions) -> Paint -> Composite
+
+  The Critical Rendering Path is the sequence the browser follows to transform HTML, CSS, and JavaScript into pixels. It involves parsing HTML into the DOM, parsing CSS into the CSSOM, creating the render tree, calculating layout, painting, and compositing. Optimizing this path reduces the time to first render. In React applications, we optimize it using lazy loading, code splitting, preloading critical assets, minimizing render-blocking resources, and using SSR or streaming SSR when appropriate.
+
+Web Vitals: Google metrics that measure user experience.
+  
+  i) Largest Contentful Paint (LCP)
+
+    Measures loading performance.
+
+    Usually
+
+    Hero image
+    Main heading
+    Large banner
+
+    Good < 2.5 sec
+
+    Improve by
+
+    CDN
+    Image optimization
+    preload
+    SSR
+    caching
+
+  ii) Interaction to Next Paint (INP)
+
+    Replaced FID. (First input delay)
+
+    Measures responsiveness.
+
+    Example
+
+    User clicks
+    ↓
+    How quickly UI updates.
+
+    Good < 200ms
+
+    Improve by
+    avoiding heavy JS
+    memoization
+    virtualization
+    splitting long tasks
+  
+  iii) Cumulative Layout Shift (CLS)
+
+    Measures layout movement.
+
+    Bad
+    Loading...
+    ↓
+    Image loads
+    ↓
+    Everything shifts
+
+    Good < 0.1
+
+    Improve by
+    width/height on images
+    reserve space
+    avoid inserting ads dynamically
+  
+  iv) Other metrics
+    FCP - First Contentful Paint
+      First text/image appears.
+
+    TTFB - Time To First Byte
+      Measures server response.
+  
+  Core Web Vitals are user-centric performance metrics introduced by Google. LCP measures loading performance, INP measures responsiveness after user interactions, and CLS measures visual stability. In React projects we improve these through image optimization, lazy loading, code splitting, avoiding long-running JavaScript tasks, and reserving layout space for dynamic content.
+
+  DDOS => Distributed Denial of Service.
+    Thousands or millions of machines flood a server.
+
+    Users
+    ↓
+    Server
+    ↓
+    1 million fake requests
+    ↓
+    Server crashes
+
+    Protection
+    Cloudflare
+    AWS Shield
+    CDN
+    Rate Limiting
+    WAF
+    CAPTCHA
+
+    React doesn't solve DDoS.
+
+    Infrastructure does.
+
+  MITM => Man In The Middle Attach
+  Attacker intercepts communication.
+  
+  Without HTTPS
+  Attacker can
+
+  read passwords
+  modify requests
+  steal cookies
+
+  Client
+      ↓
+  Attacker
+      ↓
+  Server
+
+  Protection
+    HTTPS
+    TLS
+    HSTS
+    Certificate validation
+
+  Frontend precautions
+    never use HTTP APIs
+    secure cookies
+    HttpOnly
+    SameSite
+    CSP
+  
+Static Analysis tools: These check code without executing it.
+  i) ESLint: helps find unused variables, bad react patterns and unused dependencies.
+  ii) Prettier: Formatting: tabs, quotes and indentation
+  iii) TypeScript: Compile time checking
+  iv) Husky: Runs checks before commit. git commit -> lint -> tests -> commit
+  v) SonarQube: Enterprise tool, used to detect bugs, code smells, duplication, vulnerability, complexiies.
+  vi) lint-staged: only checks modified lines and files
+
+  In most React projects, our static analysis pipeline includes ESLint with the React Hooks plugin to catch code quality issues and hook misuse, Prettier for consistent formatting, and TypeScript for compile-time type safety. We usually enforce these checks with Husky and lint-staged so only changed files are validated before commits. For security, we use tools like npm audit, Dependabot or Renovate, and sometimes Snyk. For larger codebases, SonarQube helps identify code smells, duplicated logic, and maintainability issues. During development and optimization, we also use Lighthouse, bundle analyzers, and the React Profiler to monitor performance and bundle size.
 */
