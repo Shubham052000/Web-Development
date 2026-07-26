@@ -113,19 +113,89 @@ export default SeniorExpEngineerReactChallenges;
 
 -> Create and use mixins? write syntax
 
--> Generate performance metrics for reddit.com
+Q) Generate performance metrics for reddit.com
+A) Right click > inspect > lighthouse tab > Analyse page
 
 -> bundles, webpack and vite
 
--> vite vs webpack how it makes developer life easier main advantage of using it
+Q) vite vs webpack how it makes developer life easier main advantage of using it
+A) The biggest advantage of Vite over Webpack is the development experience. Vite starts the dev server almost instantly and updates only the changed module using native ES modules, whereas Webpack bundles the entire application before serving it. This leads to much faster startup and Hot Module Replacement (HMR), especially in large projects.
+
+  Webpack: when you run "npm run start"
+  Reads every module.
+  Builds the dependency graph.
+  Bundles the application.
+  Starts the dev server.
+
+  Vite: when you run "npm run dev"
+  Starts the server immediately.
+  Doesn't bundle your source code for development.
+  Serves files as native ES modules.
+  Bundles only for production.
 
 -> design patterns HOC, custom hooks, render props all explain in detail with one use case.
 
 -> react rendering process questions
 
--> picture tag rem ^nbsp;  radio css animation css extend vs includes 
+Q) picture tag rem ^nbsp;  radio css animation css extend vs includes 
+A) The <picture> tag in HTML is used to serve different images based on the device, screen size, or image format. It gives the browser multiple image options and lets it choose the most appropriate one.
 
--> cookies, session and local storage
+This is commonly used for:
+  Responsive images (mobile vs. desktop)
+  Serving modern formats like WebP or AVIF with a JPEG fallback
+  Art direction (different image crops for different screen sizes)
+
+How it works
+Browser checks the first <source>.
+If it supports that format, it uses it.
+Otherwise, it checks the next <source>.
+If none match, it falls back to the <img>.
+
+Can be used to load WebP with Jpeg fallback
+  <picture>
+    <source srcset="image.webp" type="image/webp">
+    <source srcset="image.jpg" type="image/jpeg">
+    <img src="image.jpg" alt="Mountain">
+  </picture>
+
+Can be used for responsiveness
+  <picture>
+    <source
+      media="(max-width: 768px)"
+      srcset="mobile.jpg">
+
+    <source
+      media="(min-width: 769px)"
+      srcset="desktop.jpg">
+
+    <img src="desktop.jpg" alt="Homepage banner">
+  </picture>
+
+The <picture> element lets the browser choose the most appropriate image from multiple sources. It's commonly used for responsive images, serving modern formats like AVIF or WebP with fallbacks, and art direction where different image versions are shown on different screen sizes. The <img> inside <picture> acts as the required fallback if none of the <source> elements match.
+
+
+Q) cookies, session and local storage
+A) Cookies are small pieces of data (around 4 KB) that are automatically sent with HTTP requests and are commonly used for authentication and session management. Local Storage stores larger amounts of data (typically 5–10 MB) in the browser, persists until cleared, and is never sent to the server automatically, making it suitable for persistent client-side data like user preferences. Session Storage is similar to Local Storage but is scoped to a single browser tab and is cleared when that tab or window is closed, making it useful for temporary per-tab state such as form progress.
+
+Cookies can be set by both the server and JavaScript. The server sets them using the Set-Cookie response header, while client-side code can use document.cookie. However, security-sensitive cookies such as session IDs are typically set by the server with the HttpOnly flag, because HttpOnly cookies cannot be accessed by JavaScript and help protect against XSS attacks.
+
+Cookies Common use cases (can expire after minutes, days, months or when the broswer closes (session cookeis))
+Session ID
+Authentication (preferably HttpOnly cookies)
+User preferences
+Language selection
+
+Localstorage Common use cases (Created -> Browser closed -> still exists -> deleted manually or by app)
+Theme preference
+Shopping cart
+Recently viewed items
+Cached API responses (where appropriate)
+
+SessionStorage Common use cases (Tab open -> Created  -> Tab close -> deleted)
+Multi-step forms
+Temporary filters
+Wizard progress
+Unsaved draft state for a single tab
 
 Q) how would you allocate 100mb memory for your web app
 A) In JavaScript, I can't directly ask the browser to reserve 100 MB like I could with malloc in C or new in C++. Memory is allocated automatically as objects, arrays, or buffers are created. If I specifically needed roughly 100 MB—for example, to hold binary data—I would allocate an ArrayBuffer of that size.
