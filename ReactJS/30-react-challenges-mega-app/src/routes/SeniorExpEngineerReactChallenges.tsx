@@ -10,6 +10,7 @@ import RickAndMortyContextWithHookAndDebouncing, {
 } from "../components/SeniorEngineerReactComponents/RickAndMortyContextWithHookAndDebouncing";
 import LiveSaleSnackbar from "../components/SeniorEngineerReactComponents/LiveSaleSnackbar";
 import TimerWithMinutesAndSeconds from "../components/SeniorEngineerReactComponents/TimerWithMinutesAndSeconds";
+import SWPeopleFilmVehicleTable from "../components/SeniorEngineerReactComponents/SWPeopleFilmVehicleTable";
 
 const questions = [
   {
@@ -72,6 +73,12 @@ const questions = [
     desc: "Timer with start, stop and pause with minutes and seconds",
     content: <TimerWithMinutesAndSeconds />,
   },
+  {
+    id: 10,
+    title: "People Film and Vehicle Table StarsWars",
+    desc: "fetch data from https://swapi.py4e.com/api/people/, display it in table with name, film and vehicle as table column header. if you open the above url, films and vehicles are again URL, we have to fetch data and display film and vehicle with comma separated value and at last implement paginaton",
+    content: <SWPeopleFilmVehicleTable />,
+  },
 ];
 
 const SeniorExpEngineerReactChallenges = () => {
@@ -103,7 +110,7 @@ const SeniorExpEngineerReactChallenges = () => {
 
 export default SeniorExpEngineerReactChallenges;
 /*
--> fetch data from https://swapi.py4e.com/api/people/, display it in table with name, file and vehicle as table column header. if you open the above url, filem and vehicle are again URL, we have to fetch data and display film and behicle with comma separated value and at last implement paginaton: solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
+-> : solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
 
 -> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
 
@@ -113,10 +120,10 @@ export default SeniorExpEngineerReactChallenges;
 
 -> Create and use mixins? write syntax
 
+-> bundles, webpack and vite
+
 Q) Generate performance metrics for reddit.com
 A) Right click > inspect > lighthouse tab > Analyse page
-
--> bundles, webpack and vite
 
 Q) vite vs webpack how it makes developer life easier main advantage of using it
 A) The biggest advantage of Vite over Webpack is the development experience. Vite starts the dev server almost instantly and updates only the changed module using native ES modules, whereas Webpack bundles the entire application before serving it. This leads to much faster startup and Hot Module Replacement (HMR), especially in large projects.
