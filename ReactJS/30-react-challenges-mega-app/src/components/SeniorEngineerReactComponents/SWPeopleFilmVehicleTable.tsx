@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type RowData = {
   name: string;
@@ -10,9 +10,21 @@ const SWPeopleFilmVehicleTable = () => {
   const [page, setPage] = useState(1);
   const [rowData, setRowData] = useState<RowData[]>([]);
   const [loading, setLoading] = useState(false);
+  const cacheRef = useRef(new Map());
 
-  const handlePageChange = () => {
-    setPage((prevPage) => prevPage + 1);
+  const fetchWithCache = async (url: string) => {
+    if (cacheRef.current.has(url)) {
+      return cacheRef.current.get(url);
+    }
+    const resp = await fetch(url);
+    const data = await resp.json();
+    cacheRef.current.set(url, data);
+    return data;
+  };
+
+  const handlePageChange = (action: "inc" | "dec") => {
+    if (action === "inc") setPage((prevPage) => prevPage + 1);
+    else setPage((prevPage) => prevPage - 1);
   };
 
   useEffect(() => {
@@ -37,16 +49,14 @@ const SWPeopleFilmVehicleTable = () => {
             }) => {
               const films = await Promise.all(
                 result.films.map(async (film: string) => {
-                  const resp = await fetch(film);
-                  const data = await resp.json();
+                  const data = await fetchWithCache(film);
                   return data.title;
                 }),
               );
 
               const vehicles = await Promise.all(
                 result.vehicles.map(async (vehicle: string) => {
-                  const resp = await fetch(vehicle);
-                  const data = await resp.json();
+                  const data = await fetchWithCache(vehicle);
                   return data.name;
                 }),
               );
@@ -104,10 +114,19 @@ const SWPeopleFilmVehicleTable = () => {
         )
       )}
       <div>
+        <button
+          className={`bg-black text-white rounded-full px-2 py-1 mx-5 ${
+            page === 1 ? "bg-gray-700 cursor-not-allowed" : "cursor-pointer"
+          }`}
+          onClick={() => handlePageChange("dec")}
+          disabled={page === 1}
+        >
+          Prev Page
+        </button>
         <span>Current page: {page}</span>
         <button
           className="bg-black text-white rounded-full px-2 py-1 mx-5 cursor-pointer"
-          onClick={handlePageChange}
+          onClick={() => handlePageChange("inc")}
         >
           Next Page
         </button>
