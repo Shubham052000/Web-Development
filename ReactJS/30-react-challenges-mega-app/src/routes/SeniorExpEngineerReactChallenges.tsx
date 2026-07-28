@@ -79,6 +79,12 @@ const questions = [
     desc: "fetch data from https://swapi.py4e.com/api/people/, display it in table with name, film and vehicle as table column header. if you open the above url, films and vehicles are again URL, we have to fetch data and display film and vehicle with comma separated value and at last implement paginaton",
     content: <SWPeopleFilmVehicleTable />,
   },
+  {
+    id: 11,
+    title: "Promise.all polyfill",
+    desc: "Write a polyfill for Promise.all method",
+    content: <>Please find promiseAllPolyfill.ts in your project</>,
+  },
 ];
 
 const SeniorExpEngineerReactChallenges = () => {
@@ -110,11 +116,8 @@ const SeniorExpEngineerReactChallenges = () => {
 
 export default SeniorExpEngineerReactChallenges;
 /*
--> : solution to this problem already at: https://codesandbox.io/p/sandbox/test2-vryn85
 
 -> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
-
--> polyfill for promise.all
 
 -> Create a generic function in typescript
 
