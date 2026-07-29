@@ -85,6 +85,12 @@ const questions = [
     desc: "Write a polyfill for Promise.all method",
     content: <>Please find promiseAllPolyfill.ts in your project</>,
   },
+  {
+    id: 12,
+    title: "Generic function in typescript",
+    desc: "Create a generic function in typescript",
+    content: <>Please find genericFunction.ts in your project</>,
+  },
 ];
 
 const SeniorExpEngineerReactChallenges = () => {
@@ -119,11 +125,13 @@ export default SeniorExpEngineerReactChallenges;
 
 -> vanilla js app to fetch cart data from fakestore api for each product make call to fetch the prouct details b ID in parallel. display the ttle price and image for each product 
 
--> Create a generic function in typescript
-
 -> Create and use mixins? write syntax
 
 -> bundles, webpack and vite
+
+-> design patterns HOC, custom hooks, render props all explain in detail with one use case.
+
+-> react rendering process questions
 
 Q) Generate performance metrics for reddit.com
 A) Right click > inspect > lighthouse tab > Analyse page
@@ -142,10 +150,6 @@ A) The biggest advantage of Vite over Webpack is the development experience. Vit
   Doesn't bundle your source code for development.
   Serves files as native ES modules.
   Bundles only for production.
-
--> design patterns HOC, custom hooks, render props all explain in detail with one use case.
-
--> react rendering process questions
 
 Q) picture tag rem ^nbsp;  radio css animation css extend vs includes 
 A) The <picture> tag in HTML is used to serve different images based on the device, screen size, or image format. It gives the browser multiple image options and lets it choose the most appropriate one.
